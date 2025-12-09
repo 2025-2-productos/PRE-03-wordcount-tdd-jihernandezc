@@ -19,9 +19,11 @@ def test_homework():
         if not os.path.exists(path):
             raise Exception(f"'{path}' directory does not exist")
 
+    python_executable = "python3" if os.name != "nt" else "python"
+
     try:
         subprocess.run(
-            ["python3", "-m", "homework", "data/input", "data/output"],
+            [python_executable, "-m", "homework", "data/input", "data/output"],
             check=True,
         )
     except subprocess.CalledProcessError as e:
